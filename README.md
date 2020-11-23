@@ -1,0 +1,2 @@
+# bobir
+Asosiy
