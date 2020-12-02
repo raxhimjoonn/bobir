@@ -1,2 +1,1 @@
-# bobir
-Asosiy
+# raxhimjoonn
