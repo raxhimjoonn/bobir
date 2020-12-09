@@ -21,25 +21,269 @@ print("loading modules...")
 time.sleep(0.05)
 os.system(delet)
 print("lOading modules...")
-|/ /_\  /\  /\ |_ [] /_\
-|\/   \/  \/  \|_ |\/   \
+time.sleep(0.05)
+os.system(delet)
+print("loAding modules...")
 time.sleep(0.1)
+os.system(delet)
+print("loaDing modules...")
+time.sleep(0.1)
+os.system(delet)
+print("loadIng modules...")
+time.sleep(0.1)
+os.system(delet)
+print("loadiNg modules...")
+time.sleep(0.1)
+os.system(delet)
+print("loadinG modules...")
+time.sleep(0.1)
+os.system(delet)
+print("loading modules...")
+time.sleep(0.1)
+os.system(delet)
+print("loading mOdules...")
+time.sleep(0.1)
+os.system(delet)
+print("loading moDules...")
+time.sleep(0.1)
+os.system(delet)
+print("loading modUles...")
+time.sleep(0.1)
+os.system(delet)
+print("loading moduLes...")
+time.sleep(0.1)
+os.system(delet)
+print("loading modulEs...")
+time.sleep(0.1)
+os.system(delet)
+print("loading moduleS...")
+time.sleep(0.1)
+os.system(delet)
+print("loading modules...")
+time.sleep(0.1)
+os.system(delet)
+print("Loading modules...")
+time.sleep(0.1)
+os.system(delet)
+print("lOading modules...")
+time.sleep(0.1)
+os.system(delet)
+print("loAding modules...")
+time.sleep(0.1)
+os.system(delet)
+print("loaDing modules...")
+time.sleep(0.1)
+os.system(delet)
+print("loadIng modules...")
+time.sleep(0.1)
+os.system(delet)
+print("loadiNg modules...")
+time.sleep(0.1)
+os.system(delet)
+print("loadinG modules...")
+time.sleep(0.1)
+os.system(delet)
+print("loading Modules...")
+time.sleep(0.1)
+os.system(delet)
+print("loading mOdules...")
+time.sleep(0.1)
+os.system(delet)
+print("loading moDules...")
+time.sleep(0.1)
+os.system(delet)
+print("loading modUles...")
+time.sleep(0.1)
+os.system(delet)
+print("loading moduLes...")
+time.sleep(0.1)
+os.system(delet)
+print("loading modulEs...")
+time.sleep(0.1)
+os.system(delet)
+print("loading moduleS...")
+time.sleep(0.1)
+os.system(delet)
+print("loading modules...")
 time.sleep(0.1)
 os.system(delet)
 print("""
-|/ /_\  /\  /\ |_ [] /_\
-|\/   \/  \/  \|_ |\/   \
+█───█
+█───█
+█─█─█
+█████
+─█─█
+""")
+time.sleep(0.1)
+os.system(delet)
+print("""
+█───█──███
+█───█──█
+█─█─█──███
+█████──█
+─█─█───███
+""")
+time.sleep(0.1)
+os.system(delet)
+print("""
+█───█──███──████
+█───█──█────█──██
+█─█─█──███──████
+█████──█────█──██
+─█─█───███──████
+""")
+time.sleep(0.1)
+os.system(delet)
+print("""
+█───█──███──████───█──█
+█───█──█────█──██──█──█
+█─█─█──███──████───████
+█████──█────█──██──█──█
+─█─█───███──████───█──█
+""")
+time.sleep(0.1)
+os.system(delet)
+print("""
+█───█──███──████───█──█──████
+█───█──█────█──██──█──█──█──█
+█─█─█──███──████───████──████
+█████──█────█──██──█──█──█──█
+─█─█───███──████───█──█──█──█
+""")
+time.sleep(0.1)
+os.system(delet)
+print("""
+█───█──███──████───█──█──████──████
+█───█──█────█──██──█──█──█──█──█──█
+█─█─█──███──████───████──████──█
+█████──█────█──██──█──█──█──█──█──█
+─█─█───███──████───█──█──█──█──████
+""")
+time.sleep(0.1)
+os.system(delet)
+print("""
+█───█──███──████───█──█──████──████──█──█
+█───█──█────█──██──█──█──█──█──█──█──█─█
+█─█─█──███──████───████──████──█─────██
+█████──█────█──██──█──█──█──█──█──█──█─█
+─█─█───███──████───█──█──█──█──████──█──█
 """)
 time.sleep(0.3)
 os.system(delet)
 print("""
+████
+█──██
+████
+█──██
+████
+""")
+time.sleep(0.1)
+os.system(delet)
+print("""
+████───██─██
+█──██───███
+████─────█
+█──██────█
+████─────█
+─────────█
+""")
+time.sleep(0.1)
+os.system(delet)
+print("""
+████───██─██──────██─██
+█──██───███────────███
+████─────█──────────█
+█──██────█──────────█
+████─────█──────────█
+─────────█──────────█
+""")
+time.sleep(0.1)
+os.system(delet)
+print("""
+████───██─██──────██─██
+█──██───███────────███
+████─────█──────────█
+█──██────█──────────█
+████─────█──────────█
+─────────█──────────█
+""")
+time.sleep(0.1)
+os.system(delet)
+print("""
+████───██─██
+█──██───███
+████─────█
+█──██────█
+████─────█
+─────────█
+
+██─██──████──█──█
+─███───█──█──██─█
+──█────████──█─██
+──█────█──█──█──█
+──█────█──█──█──█
+──█
+""")
+time.sleep(0.1)
+os.system(delet)
+print("""
+████───██─██
+█──██───███
+████─────█
+█──██────█
+████─────█
+─────────█
+
+██─██──████──█──█──█──█
+─███───█──█──██─█──█──█
+──█────████──█─██──████
+──█────█──█──█──█─────█
+──█────█──█──█──█─────█
+──█
+""")
+time.sleep(0.1)
+os.system(delet)
+print("""
+████───██─██
+█──██───███
+████─────█
+█──██────█
+████─────█
+─────────█
+
+██─██──████──█──█──█──█──███
+─███───█──█──██─█──█──█───█
+──█────████──█─██──████───█
+──█────█──█──█──█─────█───█
+──█────█──█──█──█─────█──███
+──█
+""")
+time.sleep(0.1)
+os.system(delet)
+print("""
+████───██─██
+█──██───███
+████─────█
+█──██────█
+████─────█
+─────────█
+
+██─██──████──█──█──█──█──███──█──█
+─███───█──█──██─█──█──█───█───█─█
+──█────████──█─██──████───█───██
+──█────█──█──█──█─────█───█───█─█
+──█────█──█──█──█─────█──███──█──█
+──█
+""")
 time.sleep(1)
 os.system(delet)
 print('------Version 1.2------\n')
 time.sleep(5)
 os.system(delet)
 print("""
-kamera ip server manzil
+Subscribe to Yan4ik Channel on YouTube! 
+https://youtube.com/channel/UCu6l8wKI7WGlwoD1It_vcdw
+
 ------Version 1.2------
 """)
 time.sleep(4)
@@ -63,7 +307,9 @@ print("""
 14. Singapure
 15. Columbia
 
-----Project by Yashirilgan----
+----Project by Yan4ik----
+Subscribe to Yan4ik Channel on YouTube! 
+https://youtube.com/channel/UCu6l8wKI7WGlwoD1It_vcdw
 ------Version 1.2------                      
 """)
 num = int(input("country : "))
